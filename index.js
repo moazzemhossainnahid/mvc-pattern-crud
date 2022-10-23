@@ -13,6 +13,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 // middleware
+// app.use(express.text());
 app.use(express.json());
 app.use(cors());
 

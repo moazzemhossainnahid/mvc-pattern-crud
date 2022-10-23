@@ -7,14 +7,32 @@ const products = [
 module.exports.getAllProducts = (req, res, next) => {
     const {limit, page} = req.query;
     console.log(limit, page);
-res.json(products);
+res.json(products.slice(0, limit));
 };
+
+// // Another way to Export Function
+// module.exports.SaveAProducts = (req, res) => {
+//     res.send("Product Added");
+// };
+
 
 // Another way to Export Function
 module.exports.SaveAProducts = (req, res) => {
-    res.send("Product Added");
+    console.log(req.body);
+    products.push(req.body);
+    res.send(products);
 };
 
+// module.exports.getProductDetails = async (req, res, next) => {
+//     const {id, test} = req.params;
+//     console.log(id, test);
+//     res.send("Get Tools Details");
+// }
+
 module.exports.getProductDetails = async (req, res, next) => {
-    res.send("Get Tools Details");
+    const {id} = req.params;
+    console.log(id);
+    // const foundProduct = products.find(product => product.id == id);
+    const foundProduct = products.find(product => product.id === Number(id));
+    res.send(foundProduct);
 }

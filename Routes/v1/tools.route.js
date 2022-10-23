@@ -68,7 +68,7 @@ router.route("/")
 
     .post(ToolsController.SaveAProducts)
 
-router.route("/:id").get(limiter, ViewCount, ToolsController.getProductDetails);
+router.route("/:id").get( ToolsController.getProductDetails);
 
 
 module.exports = router;
