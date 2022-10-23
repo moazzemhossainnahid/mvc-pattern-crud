@@ -1,26 +1,14 @@
-/*
-const getAllProducts = (req, res) => {
-    res.send("Tools Found");
-};
-
-
-// For Exports a Function
-module.exports = {
-    getAllProducts,
-}
-
-
-*/
+const products = [
+    {id: 1, name: "Nahid"},
+    {id: 2, name: "Ashiq"},
+    {id: 3, name: "Jahid"},
+]
 
 module.exports.getAllProducts = (req, res, next) => {
-    const { ip, query, params, body, headers } = req;
-    console.log(ip, query, params, body, headers);
-    // res.send("Got It");
-    // res.download(__dirname + "/products.controllers.js");
-    // res.json({"Name" : "ABC"});
-    res.redirect("/signin");
+    const {limit, page} = req.query;
+    console.log(limit, page);
+res.json(products);
 };
-
 
 // Another way to Export Function
 module.exports.SaveAProducts = (req, res) => {
