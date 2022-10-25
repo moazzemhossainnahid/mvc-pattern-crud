@@ -16,6 +16,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // app.use(express.text());
 app.use(express.json());
 app.use(cors());
+app.use(express.static("Public"));
 
 // app.use(ViewCount);
 // module.exports.limiter = rateLimit({
@@ -329,7 +330,8 @@ const run = async () => {
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-    res.send("Running PC Hub BD Server");
+    // res.send("Running PC Hub BD Server");
+    res.send(__dirname + "./Public/test.html");
 });
 
 app.all("*", (req, res) => {
