@@ -68,7 +68,10 @@ router.route("/")
 
     .post(ToolsController.SaveAProducts)
 
-router.route("/:id").get( ToolsController.getProductDetails);
+router
+.route("/:id")
+.get( ToolsController.getProductDetails)
+.patch(ToolsController.UpdateTool)
 
 
 module.exports = router;
