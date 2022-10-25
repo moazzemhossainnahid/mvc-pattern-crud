@@ -5,6 +5,7 @@ const dbConnect = require('./Utils/dbConnect');
 const productsRoutes = require('./Routes/v1/tools.route');
 const ViewCount = require('./Middleware/ViewCount');
 const { default: rateLimit } = require('express-rate-limit');
+const errorHandler = require('./Middleware/errorHandler');
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ app.set("view engine", "ejs");
 dbConnect();
 
 app.use("/api/v1/products", productsRoutes);
+app.use("/api/v1/users", usersRoutes);
 
 
 app.get('/', (req, res) => {
@@ -43,6 +45,16 @@ app.all("*", (req, res) => {
     res.send("No Routes Found");
 })
 
+app.use(errorHandler);
+
 app.listen(port, () => {
     console.log("Listen to Port", port);
 })
+
+// Express Unhandled Error
+process.on("unhandledRejection", (error) => {
+    console.log(error.name, error.message);
+    app.close(() => {
+        process.exit(1)
+    })
+});

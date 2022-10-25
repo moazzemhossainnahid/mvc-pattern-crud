@@ -21,6 +21,15 @@ module.exports.SaveAProducts = (req, res) => {
     console.log(req.body);
     products.push(req.body);
     res.send(products);
+    res.status(200).send({
+        success: true,
+        messages: "Success",
+        data: foundTool
+    });
+    res.status(500).send({
+        success: false,
+        messages: "Internal Server Error"
+    });
 };
 
 // module.exports.getProductDetails = async (req, res, next) => {
