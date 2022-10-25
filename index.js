@@ -331,7 +331,13 @@ run().catch(console.dir);
 
 app.get('/', (req, res) => {
     // res.send("Running PC Hub BD Server");
-    res.send(__dirname + "./Public/test.html");
+    // res.send(__dirname + "./Public/test.html");
+    res.render("home.ejs", {
+        id: 3,
+        user:{
+            name:"test"
+        }
+    })
 });
 
 app.all("*", (req, res) => {
