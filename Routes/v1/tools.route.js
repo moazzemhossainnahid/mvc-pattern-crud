@@ -72,6 +72,7 @@ router
 .route("/:id")
 .get( ToolsController.getProductDetails)
 .patch(ToolsController.UpdateTool)
+.delete(ToolsController.DeleteTool)
 
 
 module.exports = router;

@@ -48,3 +48,12 @@ module.exports.UpdateTool = (req, res) => {
     res.send(newData);
 
 }
+// Delete
+module.exports.DeleteTool = (req, res) => {
+    // const newData = req.body;
+    const { id } = req.params;
+    const filter = { _id: id };
+    const newData = products.filter(project => project.id !== Number(id));
+    res.send(newData);
+
+}
